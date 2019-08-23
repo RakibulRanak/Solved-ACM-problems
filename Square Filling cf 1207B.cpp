@@ -26,24 +26,27 @@ int main()
 
 
 	vector<int>vec;
-	bool ans = true, pash = true, up = true, right = true, down = true;
+	bool ans = false, pash = true, up = true, right = true, down = true,ANS=true;
 
 	for (int i = 1; i <= r; i++)
 	{
 		for (int j = 1; j <= c; j++)
-		{
-			if (ara[i][j] == 1) {
+		{	
+				ans=false;
+			    if (ara[i][j] == 1) {
 
-				if (ara[i][j - 1] == 0 && ara[i][j + 1] == 0)
-					pash = false;
-				if (ara[i - 1][j] == 0 && ara[i + 1][j] == 0)
-					up = false;
-				//cout<<pash<<" "<<up<<endl;
-
-				if (!up || !pash)
+				if (ara[i][j - 1] == 1 && ara[i-1][j ] == 1&& ara[i-1][j-1]==1)
+					ans=true;
+				else if (ara[i][j +1] == 1 && ara[i-1][j ] == 1&& ara[i-1][j+1]==1)
+					ans=true;
+				else if (ara[i][j - 1] == 1 && ara[i+1][j ] == 1&& ara[i+1][j-1]==1)
+					ans=true;
+				else if (ara[i][j + 1] == 1 && ara[i+1][j ] == 1&& ara[i+1][j+1]==1)
+					ans=true;
+				
+				if (!ans)
 				{
-					ans = false;
-					break;
+					ANS=false;
 				}
 
 				else
@@ -52,25 +55,23 @@ int main()
 						right = false;
 					if (ara[i+ 1][j] == 0 || ara[i + 1][j + 1] == 0)
 						down = false;
-					//cout<<" ,,"<<right<<" "<<down<<endl;
 					if (right && down) {
 						vec.push_back(i);
 						vec.push_back(j);
 						
 					}
 					right=true;
-						down=true;
+					down=true;
 					
 
 				}
 			}
 
 		}
-		if (!ans)
-			break;
+	
 	}
 
-	if (ans) {
+	if (ANS) {
 		int x = 0;
 		cout << vec.size() / 2 << endl;
 		for (int i = 0; i < vec.size() / 2; i++)
