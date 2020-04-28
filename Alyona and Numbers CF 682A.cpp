@@ -21,5 +21,6 @@ int main()
         //cout<<temp1<<" "<<temp2<<endl;
         ans+=temp1*temp2;
     }
+    
     cout<<ans<<endl;
 }
