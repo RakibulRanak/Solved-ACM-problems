@@ -56,6 +56,7 @@ void solve() {
 		if (m[sum]) {
 			sum -= temp;
 			sum += val;
+			m.clear();
 			m[sum]++;
 			sum += temp;
 			ans++;
